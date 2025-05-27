@@ -1,24 +1,18 @@
-import { useNavigation } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-type AuthStackParamList = {
-  Login: undefined;
-  Register: undefined;
-};
-
 export default function HomeScreen() {
-  const navigation = useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
       {/* Navbar */}
       <View style={styles.navbar}>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity onPress={() => router.push('/auth/login')}>
           <Text style={styles.navButton}>Sign In</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+        <TouchableOpacity onPress={() => router.push('/auth/register')}>
           <Text style={styles.navButton}>Sign Up</Text>
         </TouchableOpacity>
       </View>

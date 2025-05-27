@@ -1,10 +1,11 @@
 // App.tsx
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import 'expo-router/entry';
 import React from 'react';
+import LoginScreen from './app/auth/login';
+import RegisterScreen from './app/auth/register';
 import HomeScreen from './app/index';
-import LoginScreen from './screens/auth/LoginScreen';
-import RegisterScreen from './screens/auth/RegisterScreen';
 
 const Stack = createStackNavigator();
 

@@ -1,26 +1,34 @@
-// screens/auth/LoginScreen.js
-import { signInWithEmailAndPassword } from 'firebase/auth';
+// screens/auth/RegisterScreen.js
+import { useRouter } from 'expo-router';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
 
-export default function LoginScreen({ navigation }) {
+export default function RegisterScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter();
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     setError('');
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, 'users', userCredential.user.uid), {
+        email,
+        createdAt: new Date(),
+      });
+      router.replace('/auth/login'); // Navigate to login after registration
     } catch (err) {
-      setError(err.message);
+      setError((err as Error).message);
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Sign In</Text>
+      <Text style={styles.header}>Register for TaskMate</Text>
       <TextInput
         placeholder="Email"
         value={email}
@@ -37,11 +45,11 @@ export default function LoginScreen({ navigation }) {
         style={styles.input}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
+      <TouchableOpacity style={styles.button} onPress={handleRegister}>
+        <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.link}>Don't have an account? Sign Up</Text>
+      <TouchableOpacity onPress={() => router.push('/auth/login')}>
+        <Text style={styles.link}>Already have an account? Login</Text>
       </TouchableOpacity>
     </View>
   );
@@ -70,3 +78,4 @@ const styles = StyleSheet.create({
   error: { color: 'red', textAlign: 'center', marginBottom: 8 },
   link: { color: '#010440', textAlign: 'center', marginTop: 12, fontSize: 16 },
 });
+// This code defines a RegisterScreen component for a React Native application that allows users to register an account.
