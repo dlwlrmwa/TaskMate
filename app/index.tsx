@@ -3,6 +3,11 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+type AuthStackParamList = {
+  Login: undefined;
+  Register: undefined;
+};
+
 export default function HomeScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
 
@@ -72,10 +77,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
 });
-
-// AuthStackParamList type definition
-export type AuthStackParamList = {
-  Login: undefined;
-  Register: undefined;
-  // Add other screens if needed
-};
