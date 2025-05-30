@@ -1,9 +1,11 @@
-// screens/auth/LoginScreen.js
+// app/(auth)/login.tsx (Moved and Updated)
 import { useRouter } from 'expo-router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { auth } from '../../firebase';
+import Toast from 'react-native-root-toast';
+import { Colors } from '../../constants/Colors'; // Correct path from app/(auth)/login.tsx
+import { auth } from '../../firebase'; // Correct path from app/(auth)/login.tsx
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -15,8 +17,8 @@ export default function LoginScreen() {
     setError('');
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Navigate to home or dashboard after login if needed
-      // router.replace('/'); // Uncomment and set your route
+      Toast.show('Welcome!', { duration: Toast.durations.SHORT });
+      router.replace('/(tabs)/home');
     } catch (err) {
       setError((err as Error).message);
     }
@@ -32,6 +34,7 @@ export default function LoginScreen() {
         style={styles.input}
         autoCapitalize="none"
         keyboardType="email-address"
+        placeholderTextColor={Colors.textDark}
       />
       <TextInput
         placeholder="Password"
@@ -39,12 +42,13 @@ export default function LoginScreen() {
         onChangeText={setPassword}
         secureTextEntry
         style={styles.input}
+        placeholderTextColor={Colors.textDark}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => router.push('/auth/register')}>
+      <TouchableOpacity onPress={() => router.push('../(auth)/register')}>
         <Text style={styles.link}>Don't have an account? Sign Up</Text>
       </TouchableOpacity>
     </View>
@@ -52,25 +56,26 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', padding: 20, backgroundColor: '#C1A9D9' },
-  header: { fontSize: 28, fontWeight: 'bold', marginBottom: 24, textAlign: 'center', color: '#5317A6' },
+  container: { flex: 1, justifyContent: 'center', padding: 20, backgroundColor: Colors.secondaryPaletteDark },
+  header: { fontSize: 28, fontWeight: 'bold', marginBottom: 24, textAlign: 'center', color: Colors.primaryAccent },
   input: {
     borderWidth: 1,
-    borderColor: '#7B4BBF',
+    borderColor: Colors.inputBorder,
     borderRadius: 8,
     padding: 12,
     marginBottom: 16,
     fontSize: 16,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: Colors.secondaryPaletteLight,
+    color: Colors.textDark,
   },
   button: {
-    backgroundColor: '#5317A6',
+    backgroundColor: Colors.buttonPrimary,
     padding: 14,
     borderRadius: 8,
     alignItems: 'center',
     marginBottom: 12,
   },
-  buttonText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
-  error: { color: 'red', textAlign: 'center', marginBottom: 8 },
-  link: { color: '#010440', textAlign: 'center', marginTop: 12, fontSize: 16 },
+  buttonText: { color: Colors.textLight, fontWeight: 'bold', fontSize: 16 },
+  error: { color: Colors.errorText, textAlign: 'center', marginBottom: 8 },
+  link: { color: Colors.primaryBase, textAlign: 'center', marginTop: 12, fontSize: 16 },
 });

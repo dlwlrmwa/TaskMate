@@ -12,6 +12,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "app/(tabs)/index.jsx", "screens/auth/LoginScreen.jsx"  ]
+    "expo-env.d.ts",
+    "app/(tabs)/**/*.jsx", // Added for new tabs structure
+    "app/(tabs)/**/*.tsx", // Added for new tabs structure
+    "app/(auth)/**/*.jsx", // Added for new auth structure
+    "app/(auth)/**/*.tsx"  // Added for new auth structure
+  ]
 }

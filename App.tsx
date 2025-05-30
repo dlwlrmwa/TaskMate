@@ -1,22 +1,5 @@
 // App.tsx
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// This file is now minimal, as expo-router handles the main entry point and navigation.
+// The "expo-router/entry" import in package.json and in this file's original content
+// already directs the app to use file-based routing.
 import 'expo-router/entry';
-import React from 'react';
-import LoginScreen from './app/auth/login';
-import RegisterScreen from './app/auth/register';
-import HomeScreen from './app/index';
-
-const Stack = createStackNavigator();
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
