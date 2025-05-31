@@ -1,4 +1,3 @@
-// app/(tabs)/preferences/index.tsx (Moved and Updated)
 import { getAuth } from 'firebase/auth'; // Import getAuth to get current user
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';

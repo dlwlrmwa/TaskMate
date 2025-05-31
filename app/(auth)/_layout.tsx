@@ -1,4 +1,3 @@
-// app/(auth)/_layout.tsx
 import { Stack } from 'expo-router';
 import { Colors } from '../../constants/Colors'; // Correct path from app/(auth)/_layout.tsx
 

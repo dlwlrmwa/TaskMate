@@ -1,4 +1,3 @@
-// app/(tabs)/profile.tsx (Moved and Updated)
 import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
 import { signOut, updateProfile } from 'firebase/auth'; // Import updateProfile
@@ -126,7 +125,7 @@ export default function ProfileScreen() {
       <Text style={styles.header}>User Profile</Text>
 
       {/* Profile Photo Section */}
-      <TouchableOpacity onPress={handleChooseProfilePhoto} style={styles.profilePhotoContainer}>
+      <TouchableOpacity onPress={isEditing ? handleChooseProfilePhoto : undefined} style={styles.profilePhotoContainer}>
         {profilePhotoUrl ? (
           <Image source={{ uri: profilePhotoUrl }} style={styles.profilePhoto} />
         ) : (

@@ -1,4 +1,3 @@
-// app/(tabs)/notes/index.tsx (Moved and Updated)
 import { useRouter } from 'expo-router';
 import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';

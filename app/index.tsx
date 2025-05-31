@@ -1,4 +1,3 @@
-// app/index.tsx
 import { Redirect } from 'expo-router';
 import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';

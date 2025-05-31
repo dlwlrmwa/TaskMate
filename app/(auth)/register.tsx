@@ -1,12 +1,11 @@
-// app/(auth)/register.tsx (Moved and Updated)
 import { useRouter } from 'expo-router';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Toast from 'react-native-root-toast';
-import { Colors } from '../../constants/Colors'; // Correct path from app/(auth)/register.tsx
-import { auth, db } from '../../firebase'; // Correct path from app/(auth)/register.tsx
+import { Colors } from '../../constants/Colors';
+import { auth, db } from '../../firebase';
 
 export default function RegisterScreen() {
   const [email, setEmail] = useState('');
@@ -23,7 +22,9 @@ export default function RegisterScreen() {
         createdAt: new Date(),
       });
       Toast.show('Registration successful! Please log in.', { duration: Toast.durations.SHORT });
-      router.replace('../(auth)/login'); // Navigate to login after registration within the (auth) group
+      setTimeout(() => {
+        router.replace('../(auth)/login');
+      }, Toast.durations.SHORT);
     } catch (err) {
       setError((err as Error).message);
     }

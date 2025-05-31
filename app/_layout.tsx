@@ -1,4 +1,3 @@
-// app/_layout.tsx (Root Layout for Auth Flow and Main App Tabs)
 import { Stack } from 'expo-router';
 import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';

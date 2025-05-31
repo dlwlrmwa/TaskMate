@@ -1,17 +1,16 @@
-// app/(tabs)/tasks/create.tsx (Moved and Updated)
 import { useRouter } from 'expo-router';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { Colors } from '../../../constants/Colors'; // Correct path from app/(tabs)/tasks/create.tsx
-import { db } from '../../../firebase'; // Correct path from app/(tabs)/tasks/create.tsx
-
+import { Colors } from '../../../constants/Colors';
+import { db } from '../../../firebase';
 export default function CreateTaskScreen() {
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState(''); // Will link to categories collection
-  const [note, setNote] = useState(''); // Will link to notes collection
-  const [attachment, setAttachment] = useState(''); // Placeholder for attachment URL/Base64
+  const [category, setCategory] = useState(''); 
+  const [note, setNote] = useState(''); 
+  const [attachment, setAttachment] = useState(''); 
   const [error, setError] = useState('');
   const router = useRouter();
 
@@ -73,7 +72,7 @@ export default function CreateTaskScreen() {
         placeholderTextColor={Colors.textDark}
       />
       <TextInput
-        placeholder="Attachment URL/Base64 (Placeholder)"
+        placeholder="Attachment URL (Optional)"
         value={attachment}
         onChangeText={setAttachment}
         style={styles.input}
@@ -125,7 +124,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   backButton: {
-    backgroundColor: Colors.complementaryAccent, // Different color for back button
+    backgroundColor: Colors.complementaryAccent, 
     padding: 14,
     borderRadius: 8,
     alignItems: 'center',

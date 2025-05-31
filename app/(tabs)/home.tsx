@@ -1,4 +1,3 @@
-// app/(tabs)/home.tsx (formerly app/index.tsx)
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -11,10 +10,10 @@ export default function HomeScreen() {
     <View style={styles.container}>
       {/* Navbar (These buttons will largely be superseded by the Tab Navigator, but kept for context) */}
       <View style={styles.navbar}>
-        <TouchableOpacity onPress={() => router.push('/auth/login')}>
+        <TouchableOpacity onPress={() => router.push('/(auth)/login')}>
           <Text style={styles.navButton}>Sign In</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/auth/register')}>
+        <TouchableOpacity onPress={() => router.push('/(auth)/register')}>
           <Text style={styles.navButton}>Sign Up</Text>
         </TouchableOpacity>
       </View>
