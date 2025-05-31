@@ -1,9 +1,9 @@
-import { getAuth } from 'firebase/auth'; // Import getAuth to get current user
+import { getAuth } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { Alert, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
-import { Colors } from '../../../constants/Colors'; // Correct path from app/(tabs)/preferences/index.tsx
-import { db } from '../../../firebase'; // Correct path from app/(tabs)/preferences/index.tsx
+import { Colors } from '../../../constants/Colors';
+import { db } from '../../../firebase';
 
 export default function PreferencesScreen() {
   const auth = getAuth(); // Get the Firebase auth instance
@@ -26,7 +26,6 @@ export default function PreferencesScreen() {
             setNotificationsEnabled(data.notificationsEnabled || false);
             setTheme(data.theme || 'light');
           } else {
-            // If no preferences exist, create default ones
             await setDoc(preferencesRef, {
               notificationsEnabled: false,
               theme: 'light',
@@ -86,7 +85,6 @@ export default function PreferencesScreen() {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     updatePreference('theme', newTheme);
-    // In a real app, you would apply the theme change here to the UI
     Alert.alert("Theme Change", `App theme set to ${newTheme}. (UI adaptation logic not implemented in this demo)`);
   };
 

@@ -29,8 +29,7 @@ export default function CreateTaskScreen() {
         note,
         attachment,
         createdAt: serverTimestamp(),
-        // Add userId when authentication is fully integrated and accessible here
-      });
+            });
       router.back();
     } catch (err) {
       console.error("Error adding document: ", err);

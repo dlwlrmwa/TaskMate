@@ -1,13 +1,13 @@
 import { Stack } from 'expo-router';
-import { Colors } from '../../constants/Colors'; // Correct path from app/(auth)/_layout.tsx
+import { Colors } from '../../constants/Colors';
 
 export default function AuthLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: false, // Hide header for auth screens
+        headerShown: false, 
         contentStyle: {
-          backgroundColor: Colors.secondaryPaletteDark, // Set background color for auth screens
+          backgroundColor: Colors.secondaryPaletteDark, 
         }
       }}
     >

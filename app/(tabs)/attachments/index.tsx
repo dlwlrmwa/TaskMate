@@ -87,7 +87,6 @@ export default function AttachmentsScreen() {
     if (url.startsWith('http://') || url.startsWith('https://')) {
       Linking.openURL(url).catch(err => Alert.alert("Error", "Could not open URL: " + err.message));
     } else if (url.startsWith('data:')) {
-      // For Base64, a more complex viewer might be needed, or indicate it's for display
       Alert.alert("Base64 Content", "This is Base64 content. You might need a specific viewer or save it to a file.");
     } else {
       Alert.alert("Invalid Content", "Attachment is not a valid URL or recognized Base64 format.");

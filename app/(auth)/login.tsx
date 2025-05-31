@@ -19,7 +19,7 @@ export default function LoginScreen() {
       Toast.show('Welcome!', { duration: Toast.durations.SHORT });
       setTimeout(() => {
         router.replace('/(tabs)/home');
-      }, Toast.durations.SHORT); // Wait for the toast duration before redirecting
+      }, Toast.durations.SHORT); 
     } catch (err) {
       setError((err as Error).message);
     }
